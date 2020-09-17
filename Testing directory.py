@@ -1,4 +1,3 @@
+Name = "Python" 
 
-For in range (99)
-    Print ("Testing GitHub!")
-    
+Print(Name + "Homework is due September 22nd")
