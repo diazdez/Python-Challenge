@@ -28,32 +28,40 @@ with open(csvpath) as csvfile:
     csvreader= csv.reader(csvfile, delimiter=',')
     csvheader = next(csvreader)
 
-#need to calculate total number of months included in the dataset... each month is designated to their own row. csvheader will not include the header in the count. 
+#need to calculate total number of months included in the dataset... each month is designated to their own row. 
+#confirmed csvheader will not include the header in the count. 
     for row in csvreader:
         TotalMonths = TotalMonths +1
     print(TotalMonths)
 
 #need to calculate sum of the values found in "Profit/Losses" (PL) column
-#the value in the second column (index = 1) is an Integer
 csvpath = os.path.join('Resources', 'budget_data.csv')
 with open(csvpath) as csvfile:
     csvreader= csv.reader(csvfile, delimiter=',')
     csvheader = next(csvreader)
+
+#the Profit/Losses (PL) value is found in the second column (index = 1) is an Integer
     for row in csvreader:
         TotalPL = TotalPL + int(row[1])
     print(TotalPL)
+
 
 #need to calculate the average of the changes in "Profit/Losses" (PL) Column
 with open(csvpath) as csvfile:
     csvreader= csv.reader(csvfile, delimiter=',')
     csvheader = next(csvreader)
-    for row in csvreader:
 
+#clarified that the average can be calculated by subtracting the value from the 1st and the Last Month. Then divide that by the total rows of data. 
+    for row in csvreader:
         PLdata.append(row[1])
-        print(PLdata[0])
-        print(PLdata[85])
-    AveragePL = (int(profloss[85])-int(profloss[0]))/85
-    print(AveragePL)
+        PLdiffer = (int(PLdata[0])-int(PLdata[85]))
+        print(PLdiffer)
+
+    #     PLdata.append(row[1])
+    #     print(int(PLdata[0]))
+    #     print(int(PLdata[85]))
+    # AveragePL = (int(PLdata[85])-int(PLdata[0]))/85
+    # print(AveragePL)
 
 
 # Calculate greatest increase in profits (date and amount)  

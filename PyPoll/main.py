@@ -9,10 +9,11 @@
 #   Put together final script should both print the analysis to the terminal 
 #   Export a text file with the analysis/results.
 
-#Variables
-votes = 0
-differCandidate =[]
-candidatevotes= []
+# Identify Variables
+vote_count = 0 
+candidates_with_votes = []
+candidate_vote_num = []
+pct_of_votes = []
 
 # create file path across Operating Systems (os)
 # module for reading the csv file 
@@ -21,38 +22,21 @@ import csv
 
 # file path
 csvpath = os.path.join('Resources', 'election_data.csv')
+# open/read file 
 with open(csvpath) as csvfile:
     csvreader= csv.reader(csvfile, delimiter=',')
     csvheader = next(csvreader)
+    for row in csvreader:
+# number of rows equals the number of votes: 
+        vote_count = vote_count + 1
 
     for row in csvreader:
-# Total # of votes:  will sum the # of rows
-        votes = votes + 1
-#review the candidate is listed on column 3 (index position 2) & will calculate total # of candidates. 
-        listedCandidate = (row[2])
+# Candidates are listed in Column 3 (Index = 2)
+        listed_candidate = (row[2])
 
-#will need to dicipher each listed candidate: gather the number of times a specific candidate is listed.
-        if listedCandidate in differCandidate: 
-            candidatenumber = differCandidate.index(listedCandidate)
-            candidatevotes[candidatenumber] = candidatevotes[candidatenumber] +1
-        
-        elif
-#if candidate is not a differCandidate then use the append function 
-#add 1 vote for differCandidate
-            differCandidate.append(listedCandidate)
-            candidatevotes(row[2]) = 1
-        
-    for differCandidate in candidatevotes
-        print(differCandidate + candidatenumber)
 
-# % votes each differCandidate won
-
-# print()
-# print("Election Results")
-# print("-------------------------")
-# print("Total Votes " + str(votes))
-# print("-------------------------")
-# print (results)
-# print("-------------------------")
-# print("Winner: " + str(winner[0]))
-# print("-------------------------")
+#RESULTS 
+print()
+print("Election Results")
+print("-------------------------")
+print("Total Votes: " + str(vote_count))
