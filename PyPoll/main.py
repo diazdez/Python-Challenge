@@ -1,6 +1,6 @@
 # PYPOLL: Homework
 # 	PyPoll CSV File: election_data.csv  
-# 	CSV has to 3 headers: "Voter ID", "County" & “Candidate”
+# 	CSV has a header with 3 categories: "Voter ID", "County" & “Candidate”
 # The total number of votes cast
 # A complete list of candidates who received votes
 # The percentage of votes each candidate won
@@ -87,8 +87,18 @@ print("-------------------------")
 print("Winner: " + (winner)) 
 print("-------------------------")
 
-# save output file path
-# output_file = os.path.join("output.csv")
-# open the output file
-# with open(output_file,"w") as txt_file: 
-# txt_file.write("Total Votes: " + str(vote_count))
+# # save output file path as text
+pypoll_output_file = os.path.join("..", "pypoll_output.txt")
+
+# # open the output file with write mode
+with open(pypoll_output_file,"w") as text:
+    text.write(("Election Results")+ '\n')
+    text.write(("-------------------------")+ '\n')
+    text.write(("Total Votes: " + str(vote_count))+ '\n')
+    text.write(("-------------------------")+ '\n')
+    for x in range(len(candidates_with_votes)):
+        text.write((str(candidates_with_votes[x]) + ": " +str(pct_of_votes[x])+"%" + "  "+ "(" +str(candidate_vote_num[x]) +")") + '\n')
+    text.write(("   ")+ '\n')
+    text.write(("-------------------------")+ '\n')
+    text.write(("Winner: " + (winner)) + '\n')
+    text.write(("-------------------------")+ '\n')
